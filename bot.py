@@ -90,3 +90,13 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+    
+from telegram import Update
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("✅ Bot chal raha hai!")
+
+app = ApplicationBuilder().token("8227539259:AAFFqyoMK9SBdGJIJP8K4-_chmcL4PW-RWc").build()
+app.add_handler(CommandHandler("start", start))
+app.run_polling()
